@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu งับ</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <nav class="nav">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="menu.html">Menu</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><button onclick="window.location.href='https://www.instagram.com/realnuannim';">แจ้งลายแทงเพิ่มเติม</button></li>
+        </ul>
+    </nav>
+
+    <main>
+        <div class="flex-everything-center">
+            <h2 style="margin-top: 0;">Food อาหาร</h2>
+
+            <div id="food-container" class="recommended-menu-topic">
+            </div>
+            <p>แตะเพื่อดูที่อยู่ร้านได้เลย</p>
+        </div>
+
+        <!-- <div class="flex-everything-center">
+            <h2 style="margin-top: 0;">Dessert ของหวาน</h2>
+
+            <div id="dessert-container" class="recommended-menu-topic">
+            </div>
+            <p>แตะเพื่อดูรายละเอียดได้เลย</p>
+        </div> -->
+
+        <!-- <div class="flex-everything-center">
+            <h2 style="margin-top: 0;">Mom's Signature อาหารสไตล์คุณแม่</h2>
+
+            <div id="signature-container" class="recommended-menu-topic">
+            </div>
+            <p>แตะเพื่อดูรายละเอียดได้เลย</p>
+        </div> -->
+        <div class="flex-everything-center">
+            <h3 style="text-align: center;">ส่งลายแทงร้านอาหารเพิ่มเติมหรือแจ้งปัญหาเว็บได้ที่ Direct Message ของ
+                <a href="https://www.instagram.com/realnuannim/" class="hidden-link" style="text-decoration: underline;">
+                    @realnuannim
+                </a>
+            </h3>
+        </div>
+    </main>
+
+    <div class="end">
+        <p>
+            ก่อนที่จะเลือกรับประทานมังสวิรัติควรศึกษาข้อมูลรายละเอียดทางด้านโภชนาการ
+            รวมทั้งรับทราบเกี่ยวกับสุขภาพร่างกายของตนเองว่าหากไม่บริโภคเนื้อสัตว์จะมีความเสี่ยงที่ผิดปกติหรือไม่
+            รวมทั้งหลีกเลี่ยงอาหารที่มีรสจัดโดยเฉพาะหวาน มัน เค็ม รวมทั้งที่มีไขมันและแคลอรี่สูงอีกด้วย
+            เพื่อให้สุขภาพที่ดีจากการละเว้นเนื้อสัตว์</p>
+        <p style="text-align: center;">developed by <a href="https://www.instagram.com/realnuannim/"
+                class="hidden-link">@realnuannim</a></p>
+    </div>
+
+    <script>
+        //     fetch('data.json')
+        //         .then(response => response.json())
+        //         .then(data => {
+        //             const container = document.querySelector('.flex-everything-center > div');
+        //             data.forEach(item => {
+        //                 const menuCard = document.createElement('a');
+        //                 menuCard.href = item.googleMapsLink;
+        //                 menuCard.className = 'hidden-link';
+        //                 menuCard.style.display = 'flex';
+
+        //                 menuCard.innerHTML = `
+        //     <div class="recommended-menu" style="margin-bottom: 5%">
+        //       <img src="${item.imagePath}" alt="${item.menuName}">
+        //       <h3 style="margin-bottom: 0%;">${item.menuName}</h3>
+        //       <p>${item.restaurantName}</p>
+        //     </div>
+        //   `;
+
+        //                 container.appendChild(menuCard);
+        //             });
+        //         })
+        //         .catch(error => console.error('Error loading menu data:', error));
+
+
+        fetch('data.json')
+            .then(response => response.json())
+            .then(data => {
+                // ส่วนของ "อาหาร"
+                const foodContainer = document.getElementById('food-container');
+                data.food.forEach(item => {
+                    const menuCard = document.createElement('a');
+                    menuCard.href = item.googleMapsLink;
+                    menuCard.target = '_blank';
+                    menuCard.className = 'hidden-link';
+                    menuCard.style.display = 'flex';
+
+                    menuCard.innerHTML = `
+                <div class="recommended-menu" style="margin-bottom: 5%">
+                    <img src="${item.imagePath}" alt="${item.menuName}">
+                    <h3 style="margin-bottom: 0%;">${item.menuName}</h3>
+                    <p>${item.restaurantName}</p>
+                </div>
+            `;
+
+                    foodContainer.appendChild(menuCard);
+                });
+            })
+            .catch(error => console.error('Error loading menu data:', error));
+
+        /////////////////////////////////////////////////////////////////////
+
+        // fetch('data.json')
+        //     .then(response => response.json())
+        //     .then(data => {
+        //         // ส่วนของ "อาหาร"
+        //         const foodContainer = document.getElementById('food-container');
+        //         data.food.forEach(item => {
+        //             const menuCard = document.createElement('a');
+        //             menuCard.href = item.googleMapsLink;
+        //             menuCard.target = '_blank';
+        //             menuCard.className = 'hidden-link';
+        //             menuCard.style.display = 'flex';
+
+        //             menuCard.innerHTML = `
+        //         <div class="recommended-menu" style="margin-bottom: 5%">
+        //             <img src="${item.imagePath}" alt="${item.menuName}">
+        //             <h3 style="margin-bottom: 0%;">${item.menuName}</h3>
+        //             <p>${item.restaurantName}</p>
+        //         </div>
+        //     `;
+
+        //             foodContainer.appendChild(menuCard);
+        //         });
+
+        //         // ส่วนของ "ของหวาน"
+        //         const dessertContainer = document.getElementById('dessert-container');
+        //         data.dessert.forEach(item => {
+        //             const menuCard = document.createElement('a');
+        //             menuCard.href = item.googleMapsLink;
+        //             menuCard.target = '_blank';
+        //             menuCard.className = 'hidden-link';
+        //             menuCard.style.display = 'flex';
+
+        //             menuCard.innerHTML = `
+        //         <div class="recommended-menu" style="margin-bottom: 5%">
+        //             <img src="${item.imagePath}" alt="${item.menuName}">
+        //             <h3 style="margin-bottom: 0%; text-align: center; margin-left: 10px; margin-right: 10px;">${item.menuName}</h3>
+        //             <p>${item.restaurantName}</p>
+        //         </div>
+        //     `;
+
+        //             dessertContainer.appendChild(menuCard);
+        //         });
+
+        //         // ส่วนของ "เครื่องดื่ม"
+        //         const signatureContainer = document.getElementById('signature-container');
+        //         data.signature.forEach(item => {
+        //             const menuCard = document.createElement('a');
+        //             menuCard.href = item.googleMapsLink;
+        //             menuCard.target = '_blank';
+        //             menuCard.className = 'hidden-link';
+        //             menuCard.style.display = 'flex';
+
+        //             menuCard.innerHTML = `
+        //         <div class="recommended-menu" style="margin-bottom: 5%">
+        //             <img src="${item.imagePath}" alt="${item.menuName}">
+        //             <h3 style="margin-bottom: 0%; text-align: center; margin-left: 10px; margin-right: 10px;">${item.menuName}</h3>
+        //             <p>${item.restaurantName}</p>
+        //         </div>
+        //     `;
+
+        //             signatureContainer.appendChild(menuCard);
+        //         });
+        //     })
+        //     .catch(error => console.error('Error loading menu data:', error));
+
+    </script>
+    <script async src="//www.instagram.com/embed.js"></script>
+
+</body>
+
+</html>
